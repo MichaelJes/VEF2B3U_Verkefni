@@ -1,0 +1,6 @@
+1. ECMAScript er grunurinn fyrir foritunar túngumál eins og ActionScript og Javascript.
+2.
+Functions er lesinn in fyrst og svo eru functions executed
+3.
+þetta er sjálf framkvæmd function sem er ekki global og getur ekki verið kallað í
+4.
