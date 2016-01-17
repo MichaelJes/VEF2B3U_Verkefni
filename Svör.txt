@@ -4,3 +4,10 @@ Functions er lesinn in fyrst og svo eru functions executed
 3.
 þetta er sjálf framkvæmd function sem er ekki global og getur ekki verið kallað í
 4.
+Það byrjar að búa til function sem heitir og orginalFunction og lættur það segja "hello World".
+Svo er búinn til nýr variable sem heitir copiedFunction sem kopíar Orginal functionið
+Hann redefinar svo orginalFunction og lættur það segja "goodbye world"
+Í endanum kallar hann á CopiedFunction og outputið er "Hello world"
+5.
+Það eru þrír Text,sum og I
+6.
