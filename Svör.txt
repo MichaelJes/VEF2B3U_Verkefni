@@ -7,7 +7,10 @@ Functions er lesinn in fyrst og svo eru functions executed
 Það byrjar að búa til function sem heitir og orginalFunction og lættur það segja "hello World".
 Svo er búinn til nýr variable sem heitir copiedFunction sem kopíar Orginal functionið
 Hann redefinar svo orginalFunction og lættur það segja "goodbye world"
-Í endanum kallar hann á CopiedFunction og outputið er "Hello world"
+Í endanum kallar hann á CopiedFunction og outputið er "Hello world" út af því það var bennandi á Orginal Function textan
 5.
 Það eru þrír Text,sum og I
 6.
+Það kemur Error ef þú notar Use strict en ef þú notar það ekki fjærðu engar villur
+7.
+þú þarft ekki að declera varaible til þess að kóðinn virki. Hann mundi renna með eða án Variablana
