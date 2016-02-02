@@ -1,0 +1,24 @@
+1.
+orgin = 0
+sumo = 0
+for i in range(1000):
+    if 0 == i % 5:
+        sumo = sumo + i
+        orgin = i
+    if 0 == i % 3:
+        if orgin != i:   
+            sumo = sumo + i 
+    orgin = 0
+print sumo
+2.
+fyrir, Eftir = 0, 1
+sumo = 0
+while True:
+    fyrir, Eftir = Eftir, fyrir + Eftir
+    
+    if Eftir >= 4000000:
+        break
+    if Eftir % 2 == 0:
+        print Eftir
+        sumo += Eftir
+print sumo
