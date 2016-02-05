@@ -13,19 +13,30 @@ function Pizza(verd, staerd, alegg) {
  var Pizza6 = new Pizza( 2677, "L","Oregano");
  var Pizza7 = new Pizza( 2100, "M","Oregano");
  var Pizza8 = new Pizza( 1789, "S","Oregano");
- var PizzaCollection = [Pizza1, Pizza2, Pizza3, Pizza4, Pizza5, Pizza6, Pizza7, Pizza8];
+ var PizzaCollection = 
+ [
+  Pizza1,
+  Pizza2,
+  Pizza3,
+  Pizza4,
+  Pizza5,
+  Pizza6,
+  Pizza7,
+  Pizza8
+ ];
  var imsPizza = document.getElementById("Pizza");
     var counter = 1;
  for (var x in PizzaCollection) { 
 
  	var PizzaDiv = document.createElement("div");
- 	PizzaDiv.innerHTML += "<div class=\"PizzaNafn\">"+"<h2>Bragð góð Pizza númer"+counter+"</h2>"+"</div>";
+ 	PizzaDiv.innerHTML += "<div class=\"Title\">"+"<h2>Bragð góð Pizza númer"+counter+"</h2>"+"</div>";
 	
 	PizzaDiv.className="Pizza";
-	PizzaDiv.innerHTML += "<div class=\"PizzaPrice\">" + PizzaCollection[x].verd + "</div>";
-	PizzaDiv.innerHTML += "<div class=\"PizzaStaerd\">" + PizzaCollection[x].staerd + "</div>";
-	PizzaDiv.innerHTML += "<div class=\"PizzaAlegg\">" + PizzaCollection[x].alegg + "</div>";
+	PizzaDiv.innerHTML += "<div class=\"verd\">" + PizzaCollection[x].verd + "</div>";
+	PizzaDiv.innerHTML += "<div class=\"Staerd\">" + PizzaCollection[x].staerd + "</div>";
+	PizzaDiv.innerHTML += "<div class=\"Alegg\">" + PizzaCollection[x].alegg + "</div>";
 	
 	imsPizza.appendChild(PizzaDiv);
 	counter++; 
+	
  };
