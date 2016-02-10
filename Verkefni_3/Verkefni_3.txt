@@ -1,0 +1,27 @@
+2.
+Það Prentast út Fimm
+Út af því að Fimm er sama og B og B er sama og A
+3.
+Það kemur út undefined or 2
+út af því það er ekki ekki búið að Defia Variablin A
+En út af því foo er function og það getur verið definað hvar sem er í kóðanum þá gegnur það up
+4.
+Það kemur út Aurelio De Rosa og seinni línu John Doe
+Ástæðan sú er að this er notað first til það að fá local breytuna "fullname" sem er í Obj Functioninu en í seinna skiptið er það set sem varaible og þá tekur það global "fulllname" sem er Jogn Doe 
+5.
+canYouSpotTheProblem();
+a)Það vantar að defina variable Counter
+b)Það gleymdist að defina variablein Counter
+c)function canYouSpotTheProblem() {
+  for (var counter = 0; counter < 10; counter++)
+    console.log("Happy happy");
+}
+6.
+a) var ferdinand = ___ Person("Ferdinand");
+b)Það vantar new í Ferdinand definitioninu
+c)
+function Person(name) { this.name = name; }
+var ferdinand = new Person("Ferdinand"); 
+console.log(name); 
+console.log(ferdinand.name); 
+7.
