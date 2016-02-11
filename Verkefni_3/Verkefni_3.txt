@@ -25,3 +25,25 @@ var ferdinand = new Person("Ferdinand");
 console.log(name); 
 console.log(ferdinand.name); 
 7.
+a)
+function numberToString(n, base) {
+  var result = "", sign = "";
+  if (n < 0) {
+    sign = "-";
+    n = -n;
+  }
+  do {
+    result = String(n % base) + result;
+    n /= base;
+  } while (n > 0);
+  return sign + result;
+}
+console.log(numberToString(13, 10));
+8.
+Það er sett þangað svo userinn setti in alvuru tölu í staðinn fyrir bara orð eins og "Epli" ef það gerist það kemur bara út null
+9.
+a)
+ef það error kemur nær catch í hann og try runnar ekki
+b)
+throw nær í errorinn og geymir hann svo þegar það kemur af try og catch sér catch að það er error í try og hann tekur yfir.
+c)Look aferðin er aldrei skoðuð
