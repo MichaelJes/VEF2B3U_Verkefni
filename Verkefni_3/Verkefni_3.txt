@@ -40,7 +40,8 @@ function numberToString(n, base) {
 }
 console.log(numberToString(13, 10));
 8.
-Það er sett þangað svo userinn setti in alvuru tölu í staðinn fyrir bara orð eins og "Epli" ef það gerist það kemur bara út null
+Það er sett þangað svo userinn setti in alvuru tölu í staðinn fyrir bara orð eins og "Epli" ef það gerist það kemur bara út null.
+IsNAN skoðar hvort variable er Tala eða ekki ef það er tala þá er það false og ef það er ekki tala þá kemur True
 9.
 a)
 ef það error kemur nær catch í hann og try runnar ekki
