@@ -1,4 +1,19 @@
+
+var Score = 0;
+var QuestionNumber = 0;
 "use strict";
+var allQuestions = [{
+        question: "Who is Gordon ?",
+        choices: ["Tony Blair", "Gordon Brown", "Winston Churchill", "David Cameron"],
+        correctAnswer: "David Cameron"
+    },
+    {
+        question: "Are Diamonds Rare?",
+        choices: ["Yes", "No"],
+        correctAnswer: "No"
+    }
+    
+];
 function Pizza(verd, staerd, alegg) {
     this.verd = verd;
     this.staerd = staerd;
@@ -24,7 +39,7 @@ function Pizza(verd, staerd, alegg) {
   Pizza7,
   Pizza8
  ];
- var imsPizza = document.getElementById("Pizza");
+ var imsPizza = document.getElementById("MainQuestionFunTimeExtravaganza");
     var counter = 1;
  for (var x in PizzaCollection) { 
 
