@@ -24,26 +24,27 @@ function getRandomColor() {
 
 var mainContent = document.getElementById("mainContent");
 var questionDiv = document.getElementById("questionDiv");
+
 mainContent.style.backgroundColor = getRandomColor();
 function question(i) {
     $('#questionDiv').fadeOut("slow");
     mainContent.innerHTML ='<div id="questionDiv">' +
         '<h1>Question ' + (i + 1) + '<h1>' +
         '<h2>' + allQuestions[i].question + '</h2>' +
-        '<input type="button" name="questionChoices" value="' + allQuestions[i].choices[0] + '">' + '</input>' +
-        '<input type="button" name="questionChoices" value="' + allQuestions[i].choices[1] + '">' + '</input>' +
-        '<input type="button" name="questionChoices" value="' + allQuestions[i].choices[2] + '">' + '</input>' +
-        '<input type="button" name="questionChoices" value="' + allQuestions[i].choices[3] + '">' + '</input>' +
+        '<input type="radio" name="questionChoices" value="' + allQuestions[i].choices[0] + '">' + '</input>' +
+        '<input type="radio" name="questionChoices" value="' + allQuestions[i].choices[1] + '">' + '</input>' +
+        '<input type="radio" name="questionChoices" value="' + allQuestions[i].choices[2] + '">' + '</input>' +
+        '<input type="radio" name="questionChoices" value="' + allQuestions[i].choices[3] + '">' + '</input>' +
         '</div>'
-    ;
-        $('#questionDiv').fadeIn("slow");
-        $('#questionChoices').on('click', function() {
-        /*if($('input:radio[name=questionChoices]:checked').val() === allQuestions[i].correctAnswer && i < 4) {
-            correctGuess();
+        $('#questionDiv').fadeIn("slow"); 
+        var value = $("[name='questionChoices']");
+            value.on('click', function() {
+                if($('input:radio[name=questionChoices]:checked').val() === allQuestions[i].correctAnswer && i < 4) {
+                    correctGuess();
+            
         } else {
-            incorrectGuess();
-        }*/
-        mainContent.style.backgroundColor = getRandomColor();
+            mainContent.style.backgroundColor = getRandomColor();
+        }
     });
 };
 question(QuestionNumber);
