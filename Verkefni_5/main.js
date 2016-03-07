@@ -1,6 +1,17 @@
 
 var Score = 0;
 var questionNumber = 0;
+function shuffle(a) {
+    var j, x, i;
+    for (i = a.length; i; i -= 1) {
+        j = Math.floor(Math.random() * i);
+        x = a[i - 1];
+        a[i - 1] = a[j];
+        a[j] = x;
+        }
+   
+    }
+
 var allQuestions = [
     {
         question: "Who is Gordon ?",
@@ -91,8 +102,13 @@ function incorrectGuess(i) {
 
 function endofgame(updatePage,whereToPut) {
     if (Score == questionNumber) {
+    
         var whatToPut = '<h1>Congratulations, you answered all the questions correctly !</h1><button id="restartButton">Play Again</button>';
+        window.setInterval(function(){
+                mainContent.style.backgroundColor = getRandomColor();
+        }, 500);    
     }
+
     else
     {
         var whatToPut = '<h1>You can do better then that!</h1><button id="restartButton">Play Again</button>';
@@ -162,4 +178,5 @@ function question(i) {
 
     });
 };
+shuffle(allQuestions);
 question(questionNumber);
