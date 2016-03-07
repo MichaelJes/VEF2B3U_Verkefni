@@ -139,21 +139,23 @@ var mainContent = document.getElementById("mainContent");
 var questionDiv = document.getElementById("questionDiv");
 
 mainContent.style.backgroundColor = getRandomColor();
-function question(i) {
-    function shuffle(a) {
-    var j, x, i;
-    for (i = a.length; i; i -= 1) {
-        j = Math.floor(Math.random() * i);
-        x = a[i - 1];
-        a[i - 1] = a[j];
-        a[j] = x;
-        }
    
-    }
-    shuffle(allQuestions);
+function question(i) {
+    
 
     $('#questionDiv').fadeOut("slow");
-    mainContent.innerHTML ='<div id="questionDiv">' +
+    if (typeof allQuestions[i].choices[3] == 'undefined') {
+        mainContent.innerHTML ='<div id="questionDiv">' +
+        '<h1>Question ' + (i + 1) + '<h1>' +
+        '<h2>' + allQuestions[i].question + '</h2>' +
+        '<input type="radio" name="questionChoices" value="' + allQuestions[i].choices[0] + '">'  + allQuestions[i].choices[0] +  '</input>' +
+        '<input type="radio" name="questionChoices" value="' + allQuestions[i].choices[1] + '">'  + allQuestions[i].choices[1] +  '</input>' +
+        '<button id="restartButton">Restart</button>'+
+        '</div>'
+    }
+    else
+    {
+        mainContent.innerHTML ='<div id="questionDiv">' +
         '<h1>Question ' + (i + 1) + '<h1>' +
         '<h2>' + allQuestions[i].question + '</h2>' +
         '<input type="radio" name="questionChoices" value="' + allQuestions[i].choices[0] + '">'  + allQuestions[i].choices[0] +  '</input>' +
@@ -161,7 +163,9 @@ function question(i) {
         '<input type="radio" name="questionChoices" value="' + allQuestions[i].choices[2] + '">'  + allQuestions[i].choices[2] +  '</input>' +
         '<input type="radio" name="questionChoices" value="' + allQuestions[i].choices[3] + '">'  + allQuestions[i].choices[3] +  '</input>' +
         '<button id="restartButton">Restart</button>'+
-        '</div>'
+        '</div>' 
+    }
+    
         $('#questionDiv').fadeIn("slow"); 
         $('#restartButton').on('click', function() {
             questionNumber = 0;
