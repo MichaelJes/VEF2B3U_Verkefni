@@ -53,7 +53,13 @@ function correctGuess (i) { //Name your functions the easy way.
 
 function incorrectGuess(i) {
     //Same as before, concatenate and append a single time.
-   Score --; //+=1 is the same thing as ++
+    if (Score == 0) {
+        Score = 0;
+    }
+    else
+    {
+      Score --; //+=1 is the same thing as ++  
+    }
     questionNumber ++;
 
     var updatePage = ['<div id="answerDiv">' +
@@ -84,7 +90,15 @@ function incorrectGuess(i) {
 };
 
 function endofgame(updatePage,whereToPut) {
-    var whatToPut = '<h1>Congratulations, you Win!</h1><button id="restartButton">Play Again</button>';
+    if (Score == questionNumber) {
+        var whatToPut = '<h1>Congratulations, you answered all the questions correctly !</h1><button id="restartButton">Play Again</button>';
+    }
+    else
+    {
+        var whatToPut = '<h1>You can do better then that!</h1><button id="restartButton">Play Again</button>';
+    }
+
+    
 
         updatePage = [updatePage.slice(0, whereToPut), whatToPut, updatePage.slice(whereToPut)].join('');
 
@@ -92,7 +106,7 @@ function endofgame(updatePage,whereToPut) {
 
         $('#restartButton').on('click', function() {
             questionNumber = 0;
-            totalScore = 0;
+            Score = 0;
             question(questionNumber);
         });
 }
@@ -110,6 +124,18 @@ var questionDiv = document.getElementById("questionDiv");
 
 mainContent.style.backgroundColor = getRandomColor();
 function question(i) {
+    function shuffle(a) {
+    var j, x, i;
+    for (i = a.length; i; i -= 1) {
+        j = Math.floor(Math.random() * i);
+        x = a[i - 1];
+        a[i - 1] = a[j];
+        a[j] = x;
+        }
+   
+    }
+    shuffle(allQuestions);
+
     $('#questionDiv').fadeOut("slow");
     mainContent.innerHTML ='<div id="questionDiv">' +
         '<h1>Question ' + (i + 1) + '<h1>' +
@@ -118,8 +144,14 @@ function question(i) {
         '<input type="radio" name="questionChoices" value="' + allQuestions[i].choices[1] + '">'  + allQuestions[i].choices[1] +  '</input>' +
         '<input type="radio" name="questionChoices" value="' + allQuestions[i].choices[2] + '">'  + allQuestions[i].choices[2] +  '</input>' +
         '<input type="radio" name="questionChoices" value="' + allQuestions[i].choices[3] + '">'  + allQuestions[i].choices[3] +  '</input>' +
+        '<button id="restartButton">Restart</button>'+
         '</div>'
         $('#questionDiv').fadeIn("slow"); 
+        $('#restartButton').on('click', function() {
+            questionNumber = 0;
+            Score = 0;
+            question(questionNumber);
+        });
         var value = $("[name='questionChoices']");
             value.on('click', function() {
                 if($('input:radio[name=questionChoices]:checked').val() === allQuestions[i].correctAnswer && i < 4) {
@@ -127,6 +159,7 @@ function question(i) {
         } else {
             incorrectGuess();
         }
+
     });
 };
 question(questionNumber);
