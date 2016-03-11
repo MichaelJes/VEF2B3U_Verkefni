@@ -1,129 +1,80 @@
 
-var Score = 0;
-var questionNumber = 0;
-function shuffle(a) {
-    var j, x, i;
-    for (i = a.length; i; i -= 1) {
-        j = Math.floor(Math.random() * i);
-        x = a[i - 1];
-        a[i - 1] = a[j];
-        a[j] = x;
-        }
-   
-    }
-
-var allQuestions = [
+var Score = 0;//Hvað margar spurningar hefur notandin svarað rétt
+var questionNumber = 0;//Hvaða Spurnig er notandan notaði
+var allQuestions = [//spurningarnar
     {
-        question: "Who is Gordon ?",
-        choices: ["Tony Blair", "Gordon Brown", "Winston Churchill", "David Cameron"],
-        correctAnswer: "David Cameron"
+        question: "What vitamins does Kale have in abundance",
+        choices: ["C & A", "B", "C & D", "A & C"],
+        correctAnswer: "A & C"
     },
     {
-        question: "Are Diamonds Rare?",
+        question: "Who is the prime minister of Singapore?",
+        choices: ["Xi Jinping", "Lee Hsien Loong", "Joko Widodo", "Abdul Razak Hussein"],
+        correctAnswer: "Lee Hsien Loong"
+    },
+    {
+        question: "Is the Yuan Renminbi the Chinses National Currency?",
         choices: ["Yes", "No"],
-        correctAnswer: "No"
+        correctAnswer: "Yes"
     },
-    {
-        question: "Who is Gordon ?",
-        choices: ["Tony Blair", "Gordon Brown", "Winston Churchill", "David Cameron"],
-        correctAnswer: "David Cameron"
-    }
-    
-    
 ];
-function correctGuess (i) { //Name your functions the easy way.
-    Score ++; //+=1 is the same thing as ++
-    questionNumber ++;
+function correctGuess (i) { //Þetta er functionið sem kallað er í þegar notandan hefur svarað rétt
+    Score ++; //Score + 1
+    questionNumber ++;//Hækkar um einn question number
 
-    var updatePage = ['<div id="answerDiv">' +
-        '<h1>Correct!<h1>' +
+    var updatePage = ['<div id="answerDiv">' +//Þetta er síðan sem þeir fá þegar þeir vinna
+        '<h1>Congratulations!<h1>' +
         '<h2>Score: ' + Score + '</h2></div>'
-    ], // This is how you concatenate. We join all the items we want to put in first, then call a single append.
-    whereToPut = updatePage[0].length -6; //We want to put it at the end of the text, but before the </div>
-
-    if(questionNumber < allQuestions.length){
-        var whatToPut = '<button id="nextButton">Next Question</button>';
-
-
-        //Here we place the nextQuestion variable intro the updatePage variable at the end just before the closing div
-        updatePage = [updatePage.slice(0, whereToPut), whatToPut, updatePage.slice(whereToPut)].join('');
-
-        $('#mainContent').html(updatePage); //You don't need to empty out the div every time, just replace what is there using .html().
-        //Notice how we use it only once.
-
-        $('#nextButton').on('click', function() { //Using this .on() method, you save a function call because .click() calls the .on(), so you might as well jump straight there.
-                question(questionNumber); //Don't do one liner functions
-        });
-    } else {
-        //Same thing as before
-        endofgame(updatePage,whereToPut);
+    ],  
+    whereToPut = updatePage[0].length -6; // Þetta settur update page eftir divinu
+    if(questionNumber < allQuestions.length){// ef notandin er ekki búinn með allar spurningarnar
+                question(questionNumber);//Kallar í næstu spurningu
+    } 
+    else {    
+        endofgame(updatePage,whereToPut);//ef hann er búinn
     }
 
-    $('#answerDiv').fadeIn("slow");
+    $('#answerDiv').fadeIn("slow");//Hverfur inn 
 };
-
 function incorrectGuess(i) {
-    //Same as before, concatenate and append a single time.
-    if (Score == 0) {
+    if (Score == 0){ // er þarna svo notandin fara ekki í mínus Score
         Score = 0;
     }
     else
     {
-      Score --; //+=1 is the same thing as ++  
+      Score --; // þ.e.a.ú
     }
     questionNumber ++;
-
     var updatePage = ['<div id="answerDiv">' +
-        '<h1>Incorret!<h1>' +
+        '<h1>Failure!<h1>' +
         '<h2>Score: ' + Score + '</h2></div>'
-    ], // This is how you concatenate. We join all the items we want to put in first, then call a single append.
-    whereToPut = updatePage[0].length -6; //We want to put it at the end of the text, but before the </div>
-
+    ], 
+    whereToPut = updatePage[0].length -6;// sama og gerðist áður
     if(questionNumber < allQuestions.length){
-        var whatToPut = '<button id="nextButton">Next Question</button>';
-
-
-        //Here we place the nextQuestion variable intro the updatePage variable at the end just before the closing div
-        updatePage = [updatePage.slice(0, whereToPut), whatToPut, updatePage.slice(whereToPut)].join('');
-
-        $('#mainContent').html(updatePage); //You don't need to empty out the div every time, just replace what is there using .html().
-        //Notice how we use it only once.
-
-        $('#nextButton').on('click', function() { //Using this .on() method, you save a function call because .click() calls the .on(), so you might as well jump straight there.
-                question(questionNumber); //Don't do one liner functions
-        });
+        question(questionNumber);
     } else {
-        //Same thing as before
         endofgame(updatePage,whereToPut);
     }
-
     $('#answerDiv').fadeIn("slow");
 };
-
 function endofgame(updatePage,whereToPut) {
-    if (Score == questionNumber) {
+    if (Score == questionNumber) {// Ef hann náði öllu rétt
     
         var whatToPut = '<h1>Congratulations, you answered all the questions correctly !</h1><button id="restartButton">Play Again</button>';
         window.setInterval(function(){
                 mainContent.style.backgroundColor = getRandomColor();
         }, 500);    
     }
-
     else
     {
-        var whatToPut = '<h1>You can do better then that!</h1><button id="restartButton">Play Again</button>';
+        var whatToPut = '<h1>I expected better of you</h1><button id="restartButton">Play Again</button>';
     }
-
-    
-
-        updatePage = [updatePage.slice(0, whereToPut), whatToPut, updatePage.slice(whereToPut)].join('');
+    updatePage = [updatePage.slice(0, whereToPut), whatToPut, updatePage.slice(whereToPut)].join('');
 
         $('#mainContent').html(updatePage);
 
         $('#restartButton').on('click', function() {
-            questionNumber = 0;
-            Score = 0;
-            question(questionNumber);
+            Restart();
         });
 }
 function getRandomColor() {
@@ -134,7 +85,22 @@ function getRandomColor() {
     }
     return color;
 }
-
+function Restart() {
+    questionNumber = 0;
+    Score = 0;
+    shuffle(allQuestions);
+    question(questionNumber);
+    mainContent.style.backgroundColor = getRandomColor();
+}
+function shuffle(a) {
+    var j, x, i;
+    for (i = a.length; i; i -= 1) {
+        j = Math.floor(Math.random() * i);
+        x = a[i - 1];
+        a[i - 1] = a[j];
+        a[j] = x;
+        }
+                    }
 var mainContent = document.getElementById("mainContent");
 var questionDiv = document.getElementById("questionDiv");
 
@@ -144,12 +110,12 @@ function question(i) {
     
 
     $('#questionDiv').fadeOut("slow");
-    if (typeof allQuestions[i].choices[3] == 'undefined') {
-        mainContent.innerHTML ='<div id="questionDiv">' +
+    if (typeof allQuestions[i].choices[3] == 'undefined') {// Þetta athugar hvort það er 2 eða 4 svara spurning
+        mainContent.innerHTML ='<div id="questionDiv">' +//Ég nota innerHTML til að setta það á síðuna
         '<h1>Question ' + (i + 1) + '<h1>' +
         '<h2>' + allQuestions[i].question + '</h2>' +
-        '<input type="radio" name="questionChoices" value="' + allQuestions[i].choices[0] + '">'  + allQuestions[i].choices[0] +  '</input>' +
-        '<input type="radio" name="questionChoices" value="' + allQuestions[i].choices[1] + '">'  + allQuestions[i].choices[1] +  '</input>' +
+        '<input type="button" name="questionChoices" value="' + allQuestions[i].choices[0] + '">' + "<label for=radio"+[i]+">"+'</input>' +
+        '<input type="button" name="questionChoices" value="' + allQuestions[i].choices[1] + '">' + "<label for=radio"+[i]+">"+'</input>' +
         '<button id="restartButton">Restart</button>'+
         '</div>'
     }
@@ -158,26 +124,35 @@ function question(i) {
         mainContent.innerHTML ='<div id="questionDiv">' +
         '<h1>Question ' + (i + 1) + '<h1>' +
         '<h2>' + allQuestions[i].question + '</h2>' +
-        '<input type="radio" name="questionChoices" value="' + allQuestions[i].choices[0] + '">'  + allQuestions[i].choices[0] +  '</input>' +
-        '<input type="radio" name="questionChoices" value="' + allQuestions[i].choices[1] + '">'  + allQuestions[i].choices[1] +  '</input>' +
-        '<input type="radio" name="questionChoices" value="' + allQuestions[i].choices[2] + '">'  + allQuestions[i].choices[2] +  '</input>' +
-        '<input type="radio" name="questionChoices" value="' + allQuestions[i].choices[3] + '">'  + allQuestions[i].choices[3] +  '</input>' +
+        '<input type="button" name="questionChoices" value="' + allQuestions[i].choices[0] + '">'  + '</input>' +
+        '<input type="button" name="questionChoices" value="' + allQuestions[i].choices[1] + '">'  + '</input>' +
+        '<input type="button" name="questionChoices" value="' + allQuestions[i].choices[2] + '">'  + '</input>' +
+        '<input type="button" name="questionChoices" value="' + allQuestions[i].choices[3] + '">'  +  '</input>' +
         '<button id="restartButton">Restart</button>'+
         '</div>' 
     }
     
         $('#questionDiv').fadeIn("slow"); 
-        $('#restartButton').on('click', function() {
-            questionNumber = 0;
-            Score = 0;
-            question(questionNumber);
+        $('#restartButton').on('click', function() {//takkin neðst sem byrjar leikinn aftur
+            Restart();
         });
-        var value = $("[name='questionChoices']");
-            value.on('click', function() {
-                if($('input:radio[name=questionChoices]:checked').val() === allQuestions[i].correctAnswer && i < 4) {
-                    correctGuess();
+        
+        $("[name='questionChoices']").on('click', function() {// ef klikkað er á einhvern takka nema restart takkan
+        if($('input:button[name=questionChoices]:focus').val() === allQuestions[i].correctAnswer && i < 4) {// Skoðar hvort rétt svar eða ekki
+             $('input:button[name=questionChoices]:focus').css("background-color", "green");//settur grænt þegar hann hefur rétt fyrir sér
+             $('input:button[name=questionChoices]:focus').css("color", "white");
+              setTimeout(// bíður svo notandinn sjái litinn
+              function() {
+                correctGuess();
+              }, 650);
+             
         } else {
-            incorrectGuess();
+            $('input:button[name=questionChoices]:focus').css("color", "white");
+            $('input:button[name=questionChoices]:focus').css("background-color", "red");
+              setTimeout(
+              function() {
+             incorrectGuess();
+             }, 650);
         }
 
     });
