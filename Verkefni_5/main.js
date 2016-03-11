@@ -24,7 +24,7 @@ function correctGuess (i) { //Þetta er functionið sem kallað er í þegar not
 
     var updatePage = ['<div id="answerDiv">' +//Þetta er síðan sem þeir fá þegar þeir vinna
         '<h1>Congratulations!<h1>' +
-        '<h2>Score: ' + Score +"/"+ "questionNumber" + '</h2></div>'
+        '<h2>Score: ' + Score +"/"+ questionNumber + '</h2></div>'
     ],  
     whereToPut = updatePage[0].length -6; // Þetta settur update page eftir divinu
     if(questionNumber < allQuestions.length){// ef notandin er ekki búinn með allar spurningarnar
@@ -37,7 +37,6 @@ function correctGuess (i) { //Þetta er functionið sem kallað er í þegar not
     $('#answerDiv').fadeIn("slow");//Hverfur inn 
 };
 function incorrectGuess(i) {
-
     questionNumber ++;
     var updatePage = ['<div id="answerDiv">' +
         '<h1>Failure!<h1>' +
