@@ -18,12 +18,17 @@ var allQuestions = [//spurningarnar
         correctAnswer: "Yes"
     },
 ];
+
 function correctGuess (i) { //Þetta er functionið sem kallað er í þegar notandan hefur svarað rétt
     Score ++; //Score + 1
     questionNumber ++;//Hækkar um einn question number
 
     var updatePage = ['<div id="answerDiv">' +//Þetta er síðan sem þeir fá þegar þeir vinna
+<<<<<<< HEAD
         '<h1>Congratulations!<h1>' +
+=======
+        
+>>>>>>> origin/master
         '<h2>Score: ' + Score +"/"+ questionNumber + '</h2></div>'
     ],  
     whereToPut = updatePage[0].length -6; // Þetta settur update page eftir divinu
@@ -39,7 +44,7 @@ function correctGuess (i) { //Þetta er functionið sem kallað er í þegar not
 function incorrectGuess(i) {
     questionNumber ++;
     var updatePage = ['<div id="answerDiv">' +
-        '<h1>Failure!<h1>' +
+        
         '<h2>Score: ' + Score +"/"+ questionNumber + '</h2></div>'
     ], 
     whereToPut = updatePage[0].length -6;// sama og gerðist áður
@@ -110,6 +115,7 @@ function question(i) {
         '<input type="button" name="questionChoices" value="' + allQuestions[i].choices[0] + '">' + "<label for=radio"+[i]+">"+'</input>' +
         '<input type="button" name="questionChoices" value="' + allQuestions[i].choices[1] + '">' + "<label for=radio"+[i]+">"+'</input>' +
         '<button id="restartButton">Restart</button>'+
+        '<div id="LQ">'+"Q "+(i+1)+"/"+allQuestions.length+'</div>'+
         '</div>'
     }
     else
@@ -122,6 +128,7 @@ function question(i) {
         '<input type="button" name="questionChoices" value="' + allQuestions[i].choices[2] + '">'  + '</input>' +
         '<input type="button" name="questionChoices" value="' + allQuestions[i].choices[3] + '">'  +  '</input>' +
         '<button id="restartButton">Restart</button>'+
+        '<div id="LQ">'+"Q "+(i+1)+"/"+allQuestions.length+'</div>'+
         '</div>' 
     }
     
