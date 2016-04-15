@@ -1,9 +1,22 @@
 .Window
 {
-	padding: 10px;
-	
-	
+	padding: 10px;	
+
 }
+
 body{
-	text-align:center
+	text-align:center;
+	font-family: verdana;
+	background-color: #FC2B6A;
+	color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000; 
+}
+img
+{
+    border: 2px solid;
+    border-radius: 25px
 }
