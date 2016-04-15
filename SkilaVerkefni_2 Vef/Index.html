@@ -5,44 +5,21 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title> SkilaVerkefni 2-Michael</title>
 	<meta charset="utf-8">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+<!--<![endif]-->
+    <link rel="stylesheet" type="text/css" href="Ethereal.css">
  <style>
-
   </style>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-
 <div class="main">
 </div>
-
-
-
-<script>
-$.ajax({
-    'url': 'https://apis.is/concerts',
-    'type': 'GET',
-    'dataType': 'json',
-    'success': function(response) {
-        for(var i = 0; i < response.results.length; i++){
-            var data = response.results;
-            var date = data[i].dateOfShow
-            $('.main').append('' +
-                
-                    '<div class="thumbnail">' +
-                        '<img class="eventimage" src="' + data[i].imageSource + '">' +
-                        '<div class="caption">' +
-                            '<h4 class="ellipsis"><b>' + data[i].eventDateName + '</b></h4>' +
-                            '<p>' + data[i].eventHallName + '</p>' +
-                            '<small>' + date + '</small>' +
-                        '</div>' +
-                    '</div>' +
-                '</div>');
-            
-
-        }
-    }
-})
-</script>
- 
+<script src="Java_Ajax.js"></script>
 </body>
 </html>
