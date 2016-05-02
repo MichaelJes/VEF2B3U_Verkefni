@@ -24,11 +24,9 @@ function correctGuess (i) { //Þetta er functionið sem kallað er í þegar not
     questionNumber ++;//Hækkar um einn question number
 
     var updatePage = ['<div id="answerDiv">' +//Þetta er síðan sem þeir fá þegar þeir vinna
-<<<<<<< HEAD
-        '<h1>Congratulations!<h1>' +
-=======
+
         
->>>>>>> origin/master
+
         '<h2>Score: ' + Score +"/"+ questionNumber + '</h2></div>'
     ],  
     whereToPut = updatePage[0].length -6; // Þetta settur update page eftir divinu
