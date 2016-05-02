@@ -67,14 +67,14 @@
 
                     }());
                         (function() {
-                        var $imgs = $('.Window');                  
+                        var $evento = $('.Window');                  
                         var $buttons = $('#Buttons');
                         var tagged = {};
-                        $imgs.each(function() {                         
+                        $evento.each(function() {                         
                           var img = this;                               
                           var tags = $(this).data('tags');                                             
                         if (tags) {                                   
-                            tags.split(",").forEach(function(tagName) { 
+                            tags.split().forEach(function(tagName) { 
                               if (tagged[tagName] == null) {            
                                 tagged[tagName] = [];                   
                               }
@@ -90,7 +90,7 @@
                               .addClass('active')                        
                               .siblings()                                
                               .removeClass('active');                    
-                            $imgs.show();                                
+                            $evento.show();                                
                           }
                         }).appendTo($buttons);                           
 
@@ -102,7 +102,7 @@
                                 .addClass('active')                      
                                 .siblings()                              
                                 .removeClass('active');                  
-                              $imgs                                      
+                              $evento                                      
                                 .hide()                                  
                                 .filter(tagged[tagName])                 
                                 .show();                                 
